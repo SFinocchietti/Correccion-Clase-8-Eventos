@@ -1,0 +1,24 @@
+[
+    {
+    "id" : 1,
+    "nombre" : "Acciones",
+    "precio" : 50,
+    "categorias" : ["internacionales"],
+    "description" : "Camisa de algodon"
+    },
+{
+    "id" : 2,
+    "nombre" : "Bonos",
+    "precio" : 100,
+    "categorias" : ["pesos"],
+
+    "description" : "Pantalon de algodon"
+},
+{
+    "id" : 3,
+    "nombre" : "Mixto",
+    "precio" : 150,
+    "categorias" : ["pesos"],
+    "description" : "Zapatos de algodon"
+    }
+]
