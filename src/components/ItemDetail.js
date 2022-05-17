@@ -1,57 +1,67 @@
-import ItemCount from "./ItemCount";
-import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
-import { cartContext } from "./CartContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import React from 'react'
+import{Link , NavLink} from 'react-router-dom'
+import ItemCount from './ItemCount'
+import {useState, useContext} from 'react'
+import { contexto } from './MiContexto';
 
 const ItemDetail = ({ producto }) => {
-  const [nombre, setNombre] = useState("");
-  const [cartItems, setCartItems] = useState(0);
-  const { addItem } = useContext(cartContext);
+
+  const {agregarProducto}=useContext(contexto)
   const [verContador, setVerContador] = useState(false)
 
-  const onAdd = (quantity) => {
-    setCartItems(quantity);
-    addItem(producto, quantity);
-    //console.log(e.target)
-    console.log("Click del padre");
-  };
 
+  const onClick=(contador,item)=>{
+    toast(` Se han cargado ${contador} productos` , {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      },
+      
+      agregarProducto(contador,producto)
+      
+      );
+    
+}
+
+/*
   const handleChange = (e) => {
     if (e.target.value !== "") {
       //nombre = e.target.name
       setNombre(e.target.value);
     }
-
     //console.log(e.target.name)
   };
-
   const handleFocus = (e) => {
     console.log("Focus");
   };
-
   const handleBlur = (e) => {
     console.log("Blur");
   };
-
   const handleClickDefault = (e) => {
     e.preventDefault();
     console.log("click default");
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submit");
     console.log(nombre);
   };
+*/ 
 
-  const funcionVerContador = () => {
+const funcionVerContador = () => {
       setVerContador(true)
   }
 
   if(!verContador) {
 
 
-  return (
+return (
     <article className="card cardDetail">
       {/*<form onSubmit={handleSubmit}>
                 <a href="http://google.com" onClick={handleClickDefault}>ir a Google</a>
@@ -67,9 +77,9 @@ const ItemDetail = ({ producto }) => {
       <p>Stock disponible : {producto.stock}</p>
       <p>Codigo de producto : {producto.id}</p>
       <p>Categoria : {producto.categorias}</p>
-      <ItemCount stock={producto.stock} init={1} onAdd={onAdd} onCount={funcionVerContador}/>
-      <Link to="/carrito" >
-        <button className="botonSuma btn-primary">
+      <ItemCount stock={producto.stock} init={1} onAdd={onClick} onCount={funcionVerContador} productos={producto}/>
+      <Link to="/cart" >
+        <button className="botonSuma btn-primary" onAdd={onClick} >
           Terminar Compra
           </button>
         </Link>
@@ -93,8 +103,8 @@ const ItemDetail = ({ producto }) => {
       <p>Codigo de producto : {producto.id}</p>
       <p>Categoria : {producto.categorias}</p>
       
-        <Link to="/carrito" >
-        <button className="botonSuma btn-primary">
+        <Link to="/cart" >
+        <button className="botonSuma btn-primary" onAdd={onClick}>
           Terminar Compra
           </button>
         </Link>
@@ -105,53 +115,3 @@ const ItemDetail = ({ producto }) => {
 };
 
 export default ItemDetail;
-
-
-
-
-
-
-
-
-
-/**************************************************************************************************
- * CODIGO EN REVISION
- * ************************************************************************************************/
-
-// import productosIniciales from "./productos.json"
-// import ItemCount from "./ItemCount"
-
-// const ItemDetail = ({producto}) => {
-
-
-//   const handleClick = (contador) =>{
-    
-//   }
-  
-//   return (
-//     <>
-//     <article className="card">
-//     <div>
-//       <h2>Para mas detalles</h2>
-//     <img src="http://via.placeholder.com/200x200" alt="card"/>
-//     </div>
-//     <div>
-//       <button>
-//       <p className="card__precio">
-//     $ {productosIniciales.precio}
-//     </p>
-//       </button>
-//         </div>
-//     </article>
-//     <div>
-//       <form onSubmit>
-//         <input type="text" name="username"></input>
-//         <button onClick={handleClick}>Buscar</button>
-//         <ItemCount onClick={handleClick}/>
-//       </form>
-//     </div>
-//     </>
-//   )
-// }
-
-// export default ItemDetail

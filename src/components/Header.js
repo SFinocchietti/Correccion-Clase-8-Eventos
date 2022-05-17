@@ -8,10 +8,10 @@ const Header = () => {
         <Link to="/">
         <h1 className="header__titulo">Acciones</h1>
         </Link>
-        <Link to="/Carrito">
+        <Link to="/cart">
           <span className="material-icons">shopping_cart</span>
         </Link>
-        <NavBar nombreUsuario="Otwel" footer={false} />
+        <NavBar nombre="Otwel" footer={false} />
         </header>
     </>
   );

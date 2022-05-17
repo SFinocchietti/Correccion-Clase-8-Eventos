@@ -3,9 +3,11 @@ import ItemList from "./ItemList";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
+//import { db } from "./firebase";
+//import { collection , getDoc , doc , getDocs , addDoc , query } from "firebase/firestore";
 
 export const productosIniciales = [
-   {
+{
     id: 1,
     nombre: "Accion1",
     rendimiento: "bajo",
@@ -13,6 +15,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "bajo",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },
 {
     id: 2,
@@ -22,6 +25,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },
 {
     id: 3,
@@ -31,6 +35,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },{
     id: 4,
     nombre: "Accion4",
@@ -39,6 +44,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },{
     id: 5,
     nombre: "Accion5",
@@ -47,6 +53,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },{
     id: 6,
     nombre: "Accion6",
@@ -55,6 +62,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },{
     id: 7,
     nombre: "Accion7",
@@ -63,6 +71,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },{
     id: 8,
     nombre: "Accion8",
@@ -71,6 +80,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },{
     id: 9,
     nombre: "Accion9",
@@ -79,6 +89,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },
 {
     id: 10,
@@ -88,6 +99,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "alto",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },{
     id: 11,
     nombre: "Accion11",
@@ -96,6 +108,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },{
     id: 12,
     nombre: "Accion12",
@@ -104,6 +117,7 @@ export const productosIniciales = [
     stock: 200,
     categorias: "medio",
     imagen: "https://via.placeholder.com/300x300",
+    cantPorProducto:0
 },
 
 ];
@@ -115,88 +129,75 @@ const ItemListContainer = ({ children, apellido }) => {
   //console.log({nombreCategoria,test})
 
   useEffect(() => {
-    //console.log("Pido todos los productos")
-    toast.info("Cargando productos...");
-    const pedido = new Promise((res) => {
-      setTimeout(() => {
-        res(productosIniciales);
-      }, 2000);
-    }).then(() => {
-      if (nombreCategoria === undefined) {
-        setCargando(false);
-        setProducto(productosIniciales);
-        toast.dismiss();
-        toast.success("Productos Cargados");
-      } else {
-        //console.log("Pido los productos de la categoria :",nombreCategoria)
 
-        toast.info("Cargando productos...");
+    /*
+    const productosCollection = collection(db,"productos")
+    const consulta = getDocs(productosCollection)
+    //console.log(consulta)
+    consulta
+      .then((resultado)=>{
+        //console.log(resultado.docs)
+        const productos = resultado.docs.map(doc=>{
+          const productoConId = doc.data()
+          productoConId.id = doc.id
+          return productoConId
+        })
+        setProducto(productos)
+        setCargando(false)
+        //console.log(productos)
+      })
+      .catch((error)=>{
+      })
+      .finally(()=>{
+      })
+*/
 
-        setProducto(
-          productosIniciales.filter(
-            (categoria) => categoria.categorias === nombreCategoria
-          )
-        );
-        setCargando(false);
-        toast.dismiss();
-        toast.success("Productos Cargados");
-      }
-    });
-  }, [nombreCategoria]);
 
-  if (cargando) {
-    return <BeatLoader />;
-  } else {
-    return <ItemList producto={producto} />;
-  }
+//console.log("Pido todos los productos")
+  toast.info("Cargando productos...");
+  const pedido = new Promise((res) => {
+    setTimeout(() => {
+      res(productosIniciales);
+    }, 2000);
+  }).then(() => {
+    if (nombreCategoria === undefined) {
+      setCargando(false);
+      setProducto(productosIniciales);
+      toast.dismiss();
+      toast.success("Productos Cargados");
+    } else {
+//console.log("Pido los productos de la categoria :",nombreCategoria)
+
+  toast.info("Cargando productos...");
+
+setProducto(
+    productosIniciales.filter(
+      (categoria) => categoria.categorias === nombreCategoria
+      )
+);
+    setCargando(false);
+      toast.dismiss();
+      toast.success("Productos Cargados");
+    }
+  });
+}, [nombreCategoria]);
+
+return (
+    <>
+      {cargando ? <BeatLoader /> : <ItemList producto={producto} />}
+    </>
+  )
+
+
 };
 
 export default ItemListContainer;
 
 
-
-
-
-/*******************************************************************************/
-
-// const ItemListContainer = () => {
-
-//   const [cargando,setCargando] = useState(true)
-//   const [productos,setProductos] = useState([])
-
-//   useEffect(()=>{
-
-//     const pedido = new Promise((res)=>{
-//       setTimeout(()=>{
-//         res(productosIniciales)
-//       },2000)
-//     })
-
-//     pedido
-//     .then(()=>{
-//       console.log("Termino el pedido bien!")
-//       setCargando(false)
-//       setProductos(productosIniciales)
-
-//     })
-
-//   },[])
-
-// if (cargando){
-//   return(
-//     <p>Cargando....</p>
-//   )
-// }else {
-//   return(
-//     <ItemList productos={productos}/>
-//   )
-// }
-// }
-// export default ItemListContainer
-
-// return (
-//   <main>
-//     {props.children}     
-//       <ItemList/> 
-//   </main>
-//   )
+/*
+if (cargando) {
+  return <BeatLoader />;
+} else {
+  return <ItemList producto={producto} />;
+}
+*/

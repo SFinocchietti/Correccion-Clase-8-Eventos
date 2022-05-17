@@ -70,41 +70,6 @@ export default ItemList
 // }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*import ReactDOM from "react-dom";
 import { useState } from "react";
 
