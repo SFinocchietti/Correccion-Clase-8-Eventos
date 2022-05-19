@@ -3,8 +3,8 @@ import ItemList from "./ItemList";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
-//import { db } from "./firebase";
-//import { collection , getDoc , doc , getDocs , addDoc , query } from "firebase/firestore";
+import { db } from "./firebase";
+import { collection , getDoc , doc , getDocs , addDoc , query } from "firebase/firestore";
 
 export const productosIniciales = [
 {
@@ -130,59 +130,68 @@ const ItemListContainer = ({ children, apellido }) => {
 
   useEffect(() => {
 
-    /*
     const productosCollection = collection(db,"productos")
     const consulta = getDocs(productosCollection)
     //console.log(consulta)
+
     consulta
       .then((resultado)=>{
         //console.log(resultado.docs)
+
         const productos = resultado.docs.map(doc=>{
+
           const productoConId = doc.data()
           productoConId.id = doc.id
+
           return productoConId
         })
+
         setProducto(productos)
         setCargando(false)
+
         //console.log(productos)
       })
       .catch((error)=>{
+
       })
       .finally(()=>{
+
       })
+
+
+
+
+
+/*
+    //console.log("Pido todos los productos")
+    toast.info("Cargando productos...");
+    const pedido = new Promise((res) => {
+      setTimeout(() => {
+        res(productosIniciales);
+      }, 2000);
+    }).then(() => {
+      if (nombreCategoria === undefined) {
+        setCargando(false);
+        setProducto(productosIniciales);
+        toast.dismiss();
+        toast.success("Productos Cargados");
+      } else {
+        //console.log("Pido los productos de la categoria :",nombreCategoria)
+        toast.info("Cargando productos...");
+        setProducto(
+          productosIniciales.filter(
+            (categoria) => categoria.categorias === nombreCategoria
+          )
+        );
+        setCargando(false);
+        toast.dismiss();
+        toast.success("Productos Cargados");
+      }
+    });
 */
+  }, [nombreCategoria]);
 
-
-//console.log("Pido todos los productos")
-  toast.info("Cargando productos...");
-  const pedido = new Promise((res) => {
-    setTimeout(() => {
-      res(productosIniciales);
-    }, 2000);
-  }).then(() => {
-    if (nombreCategoria === undefined) {
-      setCargando(false);
-      setProducto(productosIniciales);
-      toast.dismiss();
-      toast.success("Productos Cargados");
-    } else {
-//console.log("Pido los productos de la categoria :",nombreCategoria)
-
-  toast.info("Cargando productos...");
-
-setProducto(
-    productosIniciales.filter(
-      (categoria) => categoria.categorias === nombreCategoria
-      )
-);
-    setCargando(false);
-      toast.dismiss();
-      toast.success("Productos Cargados");
-    }
-  });
-}, [nombreCategoria]);
-
-return (
+  return (
     <>
       {cargando ? <BeatLoader /> : <ItemList producto={producto} />}
     </>
