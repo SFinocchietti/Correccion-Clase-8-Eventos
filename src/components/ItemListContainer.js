@@ -130,7 +130,7 @@ const ItemListContainer = ({ children, apellido }) => {
 
   useEffect(() => {
 
-    const productosCollection = collection(db,"productos")
+    const productosCollection = collection(db,"producto")
     const consulta = getDocs(productosCollection)
     //console.log(consulta)
 

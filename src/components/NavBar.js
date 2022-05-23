@@ -44,12 +44,12 @@ const NavBar = ({footer, nombre}) => {
 
       <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
         <li>
-          <NavLink to="category/Chapas" className="dropdown-item">
+          <NavLink to="category/Acciones" className="dropdown-item">
             Acciones
           </NavLink>
         </li>
         <li>
-          <NavLink to="category/Caños" className="dropdown-item">
+          <NavLink to="category/Bonos" className="dropdown-item">
             Bonos
           </NavLink>
         </li>
@@ -59,7 +59,7 @@ const NavBar = ({footer, nombre}) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="category/Herrajes" className="dropdown-item">
+          <NavLink to="category/Mixto" className="dropdown-item">
             Mixto
           </NavLink>
         </li>
