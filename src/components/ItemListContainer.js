@@ -4,7 +4,7 @@ import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { db } from "./firebase";
-import { collection , getDoc , doc , getDocs , addDoc , query } from "firebase/firestore";
+import { collection , getDoc , doc , getDocs , addDoc , query , where } from "firebase/firestore";
 
 export const productosIniciales = [
 {

@@ -4,7 +4,7 @@ import { BeatLoader } from "react-spinners";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import {db} from "./firebase"
-import { collection , getDoc , doc , getDocs , addDoc , query } from "firebase/firestore";
+import { collection , getDoc , doc , getDocs , addDoc , query , where } from "firebase/firestore";
 
 
 const productosIniciales = [
@@ -137,7 +137,7 @@ useEffect(() => {
 // toast.info("Cargando detalle...");
 
 const productosCollection = collection(db,"productos")
-const consulta = getDocs(productosCollection)
+const consulta = getDoc(productosCollection)
 //console.log(consulta)
 
 
