@@ -3,7 +3,7 @@ import CartContext from "./CartContext";
 
 
 const Carrito = () => {
-  const { precio_total, carrito, vaciarCarrito } = useContext(CartContext);
+  const { precio_total, carrito } = useContext(CartContext);
   //console.log({precio_total, carrito})
 
   const orden = {

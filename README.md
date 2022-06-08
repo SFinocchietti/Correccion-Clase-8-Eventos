@@ -1,3 +1,56 @@
+Hola me llamo Sebastian, soy nuevo en este mundo de programacion.
+
+Me gusta mucho la idea de poder realizar codigo y poder con lineas hacer lo que una empresa o persona quiera para su web.
+
+Mi github es Sebas744
+
+Hay demasiadas cosas por cambiar desde el punto de programacion pero todas las recomendaciones es aprender cada lenguaje a su tiempo y sin apuro, me encuentro en ese camino.
+
+Mi mail es sebastianfino@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

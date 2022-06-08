@@ -1,10 +1,10 @@
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import React from 'react'
-import{Link , NavLink} from 'react-router-dom'
-import ItemCount from './ItemCount'
-import {useState, useContext} from 'react'
-import { contexto } from './MiContexto';
+import "react-toastify/dist/ReactToastify.css";
+import React from "react";
+import{Link } from "react-router-dom";
+import ItemCount from "./ItemCount";
+import {useState, useContext} from "react";
+import { contexto } from "./ContextoCarrito";
 
 const ItemDetail = ({ producto }) => {
 
@@ -12,7 +12,7 @@ const ItemDetail = ({ producto }) => {
   const [verContador, setVerContador] = useState(false)
 
 
-  const onClick=(contador,item)=>{
+  const onClick=(contador,producto)=>{
     toast(` Se han cargado ${contador} productos` , {
       position: "top-right",
       autoClose: 1000,
@@ -29,30 +29,6 @@ const ItemDetail = ({ producto }) => {
     
 }
 
-/*
-  const handleChange = (e) => {
-    if (e.target.value !== "") {
-      //nombre = e.target.name
-      setNombre(e.target.value);
-    }
-    //console.log(e.target.name)
-  };
-  const handleFocus = (e) => {
-    console.log("Focus");
-  };
-  const handleBlur = (e) => {
-    console.log("Blur");
-  };
-  const handleClickDefault = (e) => {
-    e.preventDefault();
-    console.log("click default");
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submit");
-    console.log(nombre);
-  };
-*/ 
 
 const funcionVerContador = () => {
       setVerContador(true)
@@ -77,7 +53,12 @@ return (
       <p>Stock disponible : {producto.stock}</p>
       <p>Codigo de producto : {producto.id}</p>
       <p>Categoria : {producto.categorias}</p>
-      <ItemCount stock={producto.stock} init={1} onAdd={onClick} onCount={funcionVerContador} productos={producto}/>
+      <ItemCount 
+      stock={producto.stock} 
+      init={1} 
+      onAdd={onClick} 
+      onCount={funcionVerContador} 
+      productos={producto}/>
       <Link to="/cart" >
         <button className="botonSuma btn-primary" onAdd={onClick} >
           Terminar Compra

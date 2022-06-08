@@ -1,4 +1,4 @@
-/*********************IMPORTAR IMAGEN!!******/
+import btc from "../imagenes/btc.jpg";
 import ItemDetailContainer from "./ItemDetailContainer";
 import ItemListContainer from "./ItemListContainer";
 import { Routes, Route } from "react-router-dom";
@@ -8,7 +8,8 @@ import Cart from "./Cart";
 
 const Main = () => {
   return (
-    <main className="main">
+    <main className="main" >
+      
 {/*<h2>La nueva plataforma de invertir tu dinero</h2>
 <h3>No duddes en invertir</h3>
 <ItemListContainer nombreUsuario="Otwel"/>
